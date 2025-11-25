@@ -1,154 +1,205 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Резюме — Батурин Данила Андреевич</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Private site</title>
 
     <style>
         body {
             margin: 0;
-            padding: 0;
-            font-family: "Segoe UI", sans-serif;
-            background: #f7f7f7;
-            color: #222;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            background: white;
-            display: flex;
-            border-radius: 12px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        /* Left column */
-        .sidebar {
-            width: 32%;
+            font-family: "Calibri", sans-serif;
             background: #D4DDE1;
-            padding: 30px;
-            border-right: 1px solid #ddd;
-        }
-
-
-        .section-title {
-            font-size: 18px;
-            margin-top: 25px;
-            margin-bottom: 8px;
-            font-weight: 600;
             color: #333;
         }
 
-        .text-block {
-            margin-bottom: 10px;
-            line-height: 1.6;
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 50px 20px;
+            background: url('https://i.pinimg.com/736x/39/d0/66/39d066e18358efeff511e8fa5632f9dd.jpg') no-repeat center; /* top background*/
+            background-size: cover;
         }
 
-        /* Main parth */
-        .content {
-            width: 68%;
-            padding: 30px 40px;
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-left: 20px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.12);
+            background-size: cover;
+            background-position: center;
+            background-image: url("https://i.pinimg.com/736x/fb/6f/5b/fb6f5bed9ba8805a982830cc34d8533a.jpg");
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            color: white; 
+        }
+
+        p {
+            opacity: 0.85;
+            color: rgb(17, 14, 14);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .block {
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .social a {
             display: inline-block;
             margin-right: 15px;
             text-decoration: none;
-            color: #333;
+            color: #4a6fa5;
             font-weight: bold;
         }
 
-        h1 {
-            margin-top: 0;
-            font-size: 32px;
-            font-weight: 700;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
         }
 
-        h2 {
-            margin-top: 25px;
-            font-size: 22px;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
+        .gallery img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
 
-        ul {
-            margin-top: 5px;
-            padding-left: 20px;
+        .gallery img:hover {
+            transform: scale(1.05);
         }
 
-        li {
-            margin-bottom: 6px;
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
         }
 
-        @media (max-width: 800px) {
-            .container {
-                flex-direction: column;
-            }
-            .sidebar, .content {
-                width: 100%;
-                border-right: none;
-            }
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.6;
+        }
+
+        /* image container*/
+        .img-container {
+            position: relative;
+            display: inline-block;
         }
     </style>
 </head>
+
 <body>
+
+<header>
+    <div>
+        <h1>Neki</h1>
+    </div>
+    <div class ="avatar"></div>
+</header>
 
 <div class="container">
 
-    <!-- Left column -->
-    <div class="sidebar">
+    <!-- bio -->
+    <div class="block">
+        <h2>About me</h2>
+        <p>
+         Silly Avali | DevOps enthusiast | Artist and Game dev | Shy but eager to learn | Spreading positivity trough hugs | Average tea enjoyer
 
-        <div class="section-title">Контакты</div>
-        <div class="text-block">Телефон: +7 930 707 81 23</div>
-        <div class="text-block">Email: globalocultcoalition69@gmail.com</div>
-        <div class="social"><a href="https://t.me/Baturiin/path">Telegram</a></div>
+        </p>
+    </div>
 
-        <div class="section-title">Языки</div>
-        <div class="text-block">Русский — Родной</div>
-        <div class="text-block">Английский — C1</div>
-        <div class="text-block">Немецкий — A2</div>
-
-        <div class="section-title">Интересы</div>
-        <div class="text-block">
-            Программирование<br>
-            Рисование<br>
-            Создание 3D моделей<br>
-            Игры<br>
-            Сериалы и фильмы
+    <!-- Socials -->
+    <div class="block">
+        <h2>Socials</h2>
+        <div class="social">
+            <a href="https://t.me/ISanekiI/path">Telegram</a>
+            <a href="https://discord.com/channels/@__neki__">Discord</a>
+            <a href="https://www.reddit.com/user/Christopher3422">Reddit</a>
+            <a href="https://steamcommunity.com/id/Neki2/">Steam</a>
+            <a href="https://www.furaffinity.net/user/saneki">FurAffinity</a>
+            <a href="https://github.com/Saneki1">GitHub</a>
+            <a href="https://pin.it/3Xr5GNsed">Pinterest</a>
         </div>
     </div>
 
-    <!-- Right parth -->
-    <div class="content">
-        <h1>Батурин Данила Андреевич</h1>
-        <h2>Программист-инженер</h2>
-        <ul>
-            <li>Увлечён разработкой, созданием удобных приложений и поиском эффективных технических решений. Постоянно расту в профессии и расширяю навыки.
-            </li>
-        </ul>
+    <!-- Sona's gallery -->
+    <div class="block">
+        <h2>Characters</h2>
 
-        <h2>Навыки</h2>
-        <ul>
-            <li>Visual Basic</li>
-            <li>C++</li>
-            <li>C#</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Flet</li>
-            <li>Docker</li>
-            <li>Linux</li>
-            <li>Rufus</li>
-        </ul>
-
-        <h2>Опыт работы</h2>
-        <ul>
-            <li><b>Логист</b> — работа с документацией, Excell, выдача денег работникам, работа с кассой, работа с клиентами, работа с коллективом и тех поддержкой, учёт, сопровождение отправок</li>
-            <li><b>Оператор ЭВМ</b> — обработка данных, перенос документации в электронный вид, работа с компьютерными системами</li>
-        </ul>
+        <div class="gallery">
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/8d/30/04/8d3004c08a94d8fb1272ba3fa922b1da.jpg" alt="Neki">
+                <div class="tooltip">Neki</div>
+            </div>
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/2e/75/4e/2e754e89995cf400cbbb5319ef350171.jpg" alt="Marshmallow">
+                <div class="tooltip">Marshmallow</div>
+            </div>
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/53/61/69/536169a67a26bcc088d352d72e4bad56.jpg" alt="Christopher">
+                <div class="tooltip">Christopher</div>
+            </div>
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/ed/f7/eb/edf7eb15501f11b362a375cdd2f19cf3.jpg" alt="idk">
+                <div class="tooltip">idk</div>
+            </div>
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/c5/56/0a/c5560a5571a74ad26c8ca2d8e8aaff2f.jpg" alt="idk">
+                <div class="tooltip">idk</div>
+            </div>
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/87/9a/40/879a40f887fd7d000aee0a5c1729082c.jpg" alt="idk">
+                <div class="tooltip">idk</div>
+            </div>
+        </div>
     </div>
 </div>
+
+<footer>
+    © 2025 IISanekiII
+</footer>
+
+<script>
+    const containers = document.querySelectorAll('.img-container');
+
+    containers.forEach(container => {
+        const img = container.querySelector('img');
+        const tooltip = container.querySelector('.tooltip');
+
+        container.addEventListener('mousemove', (e) => {
+            tooltip.style.left = e.offsetX + 10 + 'px';
+            tooltip.style.top = e.offsetY + 10 + 'px';
+            tooltip.style.opacity = 1;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = 0;
+        });
+    });
+</script>
 
 </body>
 </html>
