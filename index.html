@@ -9,8 +9,19 @@
         body {
             margin: 0;
             font-family: "Calibri", sans-serif;
-            background: #D4DDE1;
-            color: #333;
+
+            background: url("https://d.furaffinity.net/art/saneki/1775528885/1775528885.saneki_photo_5318987134473987859_y.jpg") no-repeat center center fixed;
+            background-size: cover;
+
+            color: #fff;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: -1;
         }
 
         header {
@@ -18,8 +29,6 @@
             align-items: center;
             justify-content: flex-end;
             padding: 50px 20px;
-            background: url('https://i.pinimg.com/736x/39/d0/66/39d066e18358efeff511e8fa5632f9dd.jpg') no-repeat center; /* top background*/
-            background-size: cover;
         }
 
         .avatar {
@@ -36,12 +45,11 @@
         h1 {
             margin: 0;
             font-size: 36px;
-            color: white; 
+            color: white;
         }
 
-        p {
-            opacity: 0.85;
-            color: rgb(17, 14, 14);
+        h2, p, a {
+            color: white;
         }
 
         .container {
@@ -51,50 +59,30 @@
         }
 
         .block {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
             padding: 20px 25px;
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .social a {
             display: inline-block;
             margin-right: 15px;
             text-decoration: none;
-            color: #4a6fa5;
+            color: #ffffff;
+            opacity: 0.9;
             font-weight: bold;
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
-
-        .gallery img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .tooltip {
-            position: absolute;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
+        .social a:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
 
         footer {
@@ -103,10 +91,56 @@
             opacity: 0.6;
         }
 
-        /* image container*/
-        .img-container {
+        /* slider */
+        .characters {
             position: relative;
-            display: inline-block;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .slider {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.4s ease;
+        }
+
+        .card {
+            min-width: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 10px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card p {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.4);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .prev { left: -10px; }
+        .next { right: -10px; }
+
+        .nav:hover {
+            background: rgba(0,0,0,0.7);
         }
     </style>
 </head>
@@ -117,21 +151,18 @@
     <div>
         <h1>Neki</h1>
     </div>
-    <div class ="avatar"></div>
+    <div class="avatar"></div>
 </header>
 
 <div class="container">
 
-    <!-- bio -->
     <div class="block">
         <h2>About me</h2>
         <p>
-         Silly Avali | DevOps enthusiast | Artist and Game dev | Shy but eager to learn | Spreading positivity trough hugs | Average tea enjoyer
-
+        Silly Avali | DevOps enthusiast | Artist and Game dev | Shy but eager to learn | Spreading positivity trough hugs | Average tea enjoyer
         </p>
     </div>
 
-    <!-- Socials -->
     <div class="block">
         <h2>Socials</h2>
         <div class="social">
@@ -145,37 +176,48 @@
         </div>
     </div>
 
-    <!-- Sona's gallery -->
     <div class="block">
         <h2>Characters</h2>
 
-        <div class="gallery">
-            <div class="img-container">
-                <img src="https://i.pinimg.com/736x/8d/30/04/8d3004c08a94d8fb1272ba3fa922b1da.jpg" alt="Neki">
-                <div class="tooltip">Neki</div>
+        <div class="characters">
+            <button class="nav prev">◀</button>
+
+            <div class="slider">
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/8d/30/04/8d3004c08a94d8fb1272ba3fa922b1da.jpg">
+                    <p>Neki</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/2e/75/4e/2e754e89995cf400cbbb5319ef350171.jpg">
+                    <p>Marshmallow</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/53/61/69/536169a67a26bcc088d352d72e4bad56.jpg">
+                    <p>Christopher</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/ed/f7/eb/edf7eb15501f11b362a375cdd2f19cf3.jpg">
+                    <p>idk</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/c5/56/0a/c5560a5571a74ad26c8ca2d8e8aaff2f.jpg">
+                    <p>idk</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/87/9a/40/879a40f887fd7d000aee0a5c1729082c.jpg">
+                    <p>idk</p>
+                </div>
             </div>
-            <div class="img-container">
-                <img src="https://i.pinimg.com/736x/2e/75/4e/2e754e89995cf400cbbb5319ef350171.jpg" alt="Marshmallow">
-                <div class="tooltip">Marshmallow</div>
-            </div>
-            <div class="img-container">
-                <img src="https://i.pinimg.com/736x/53/61/69/536169a67a26bcc088d352d72e4bad56.jpg" alt="Christopher">
-                <div class="tooltip">Christopher</div>
-            </div>
-            <div class="img-container">
-                <img src="https://i.pinimg.com/736x/ed/f7/eb/edf7eb15501f11b362a375cdd2f19cf3.jpg" alt="idk">
-                <div class="tooltip">idk</div>
-            </div>
-            <div class="img-container">
-                <img src="https://i.pinimg.com/736x/c5/56/0a/c5560a5571a74ad26c8ca2d8e8aaff2f.jpg" alt="idk">
-                <div class="tooltip">idk</div>
-            </div>
-            <div class="img-container">
-                <img src="https://i.pinimg.com/736x/87/9a/40/879a40f887fd7d000aee0a5c1729082c.jpg" alt="idk">
-                <div class="tooltip">idk</div>
-            </div>
+
+            <button class="nav next">▶</button>
         </div>
     </div>
+
 </div>
 
 <footer>
@@ -183,22 +225,21 @@
 </footer>
 
 <script>
-    const containers = document.querySelectorAll('.img-container');
+let index = 0;
+const slider = document.querySelector(".slider");
+const cards = document.querySelectorAll(".card");
 
-    containers.forEach(container => {
-        const img = container.querySelector('img');
-        const tooltip = container.querySelector('.tooltip');
+document.querySelector(".next").onclick = () => {
+    index++;
+    if (index > cards.length - 3) index = 0;
+    slider.style.transform = `translateX(-${index * 220}px)`;
+};
 
-        container.addEventListener('mousemove', (e) => {
-            tooltip.style.left = e.offsetX + 10 + 'px';
-            tooltip.style.top = e.offsetY + 10 + 'px';
-            tooltip.style.opacity = 1;
-        });
-
-        container.addEventListener('mouseleave', () => {
-            tooltip.style.opacity = 0;
-        });
-    });
+document.querySelector(".prev").onclick = () => {
+    index--;
+    if (index < 0) index = cards.length - 3;
+    slider.style.transform = `translateX(-${index * 220}px)`;
+};
 </script>
 
 </body>
