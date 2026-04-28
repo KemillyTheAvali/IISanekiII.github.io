@@ -55,7 +55,7 @@
             }
         }
 
-        /* фон с градиентом */
+        /* Gradient background */
         body::before {
             content: "";
             position: fixed;
@@ -64,7 +64,7 @@
             z-index: -2;
         }
 
-        /* ===== АНИМАЦИЯ ЗВЁЗД СБОКУ ===== */
+        /* ===== SIDE STAR ANIMATION ===== */
         @keyframes floatStarSide {
             0% {
                 transform: translateX(0) translateY(0) rotate(0deg);
@@ -134,7 +134,7 @@
             animation-delay: var(--delay, 0s);
         }
 
-        /* стеклянные карточки */
+        /* Glass cards */
         .glass-card {
             background: rgba(20, 15, 12, 0.55);
             backdrop-filter: blur(12px);
@@ -186,7 +186,7 @@
             margin-bottom: 0.8rem;
         }
 
-        /* ===== ВКЛАДКИ ===== */
+        /* ===== TABS ===== */
         .tabs-container {
             margin-bottom: 1.8rem;
         }
@@ -233,7 +233,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* статус и часы */
+        /* Status and clock */
         .status-row {
             display: flex;
             justify-content: space-between;
@@ -261,7 +261,7 @@
             border-radius: 2rem;
         }
 
-        /* соцсети */
+        /* Social links */
         .social-links {
             display: flex;
             flex-wrap: wrap;
@@ -286,7 +286,7 @@
             transform: scale(1.02);
         }
 
-        /* галерея персонажей (ВАШИ картинки) */
+        /* Character gallery */
         .char-slider-wrap {
             position: relative;
             overflow: hidden;
@@ -339,28 +339,30 @@
         .btn-prev { left: -5px; }
         .btn-next { right: -5px; }
 
-        /* интерактивный котик — теперь ПРАВАЯ СТОРОНА */
+        /* Interactive avali — right-side layout */
         .pet-area {
             margin-top: 1.4rem;
             display: flex;
             justify-content: flex-end;
             width: 100%;
         }
-        .cat-booth {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background: #221b1690;
-            border-radius: 2rem;
-            padding: 0.8rem;
-            max-width: 360px;
-        }
-        .pet-figure {
-            position: relative;
-            width: min(320px, 100%);
-            line-height: 0;
-        }
+        .avali-booth {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #221b1690;
+    border-radius: 2rem;
+    padding: 0.8rem;
+    max-width: 360px;
+}
+
+.pet-figure {
+    position: relative;
+    width: min(320px, 100%);
+    line-height: 0;
+}
+
         .pet-img {
             display: block;
             width: 100%;
@@ -379,19 +381,21 @@
             width: 44%;
             height: 26.4%;
         }
+        
         .nose-zone {
             top: 24%;
             left: 24%;
             width: 20%;
             height: 18%;
         }
+
         .pet-hint {
             margin-top: 8px;
             font-size: 0.7rem;
             opacity: 0.8;
         }
 
-        /* модалка для картинок */
+        /* Image modal */
         .image-modal {
             position: fixed;
             top: 0;
@@ -440,7 +444,7 @@
             flex: 2;
             min-width: 200px;
         }
-        .home-cat {
+        .home-avali {
             flex: 1;
             min-width: 210px;
             display: flex;
@@ -456,7 +460,7 @@
             .home-flex-row {
                 flex-direction: column;
             }
-            .home-cat {
+            .home-avali {
                 justify-content: center;
                 margin-top: 0.5rem;
             }
@@ -468,11 +472,11 @@
 </head>
 <body>
 
-<!-- боковая анимация (звёзды и точки) -->
+<!-- side animation (stars and dots) -->
 <div id="sideParticles"></div>
 
 <div class="container">
-    <!-- шапка -->
+    <!-- header -->
     <div class="glass-card">
         <div class="header-flex">
             <div>
@@ -483,7 +487,7 @@
         </div>
     </div>
 
-    <!-- ВКЛАДКИ -->
+    <!-- tabs -->
     <div class="glass-card tabs-container">
         <div class="tabs-header">
             <button class="tab-btn active" data-tab="home">🏠 Home</button>
@@ -491,29 +495,29 @@
             <button class="tab-btn" data-tab="socials">📡 Socials</button>
         </div>
 
-        <!-- ВКЛАДКА HOME (гифка справа + постоянная анимация при удержании) -->
+        <!-- HOME tab (right-side GIF + hold interaction) -->
         <div id="tab-home" class="tab-content active">
             <div class="home-flex-row">
                 <div class="home-text">
                     <p>Silly Avali | DevOps enthusiast | Artist and Game dev | Shy but eager to learn | Spreading positivity through hugs | Average tea enjoyer</p>
                     <p style="margin-top: 12px;">⭐ Russia · EN/RU · he/him ⭐</p>
                 </div>
-                <div class="home-cat">
+                <div class="home-avali">
                     <div class="pet-area">
-                        <div class="cat-booth">
+                        <div class="avali-booth">
                             <div class="pet-figure">
-                                <img id="petCatImg" class="pet-img" src="./assets/gif/avali-idle.gif" alt="fluffy friend" draggable="false">
+                                <img id="petAvaliImg" class="pet-img" src="./assets/gif/avali-idle.gif" alt="fluffy friend" draggable="false">
                                 <div class="head-zone" id="headZone"></div>
                                 <div class="nose-zone" id="noseZone"></div>
                             </div>
-                            <div class="pet-hint">✨ зажми голову — гладить | зажми нос — тюк ✨</div>
+                            <div class="pet-hint">✨ hold the head to pet | hold the nose to boop ✨</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ВКЛАДКА SOCIALS -->
+        <!-- SOCIALS tab -->
         <div id="tab-socials" class="tab-content">
             <div class="social-links">
                 <a href="https://t.me/ISanekiI/path" target="_blank">📱 Telegram</a>
@@ -526,7 +530,7 @@
             </div>
         </div>
 
-        <!-- ВКЛАДКА GALLERY -->
+        <!-- GALLERY tab -->
         <div id="tab-gallery" class="tab-content">
             <div class="char-slider-wrap">
                 <button class="slider-btn btn-prev" id="sliderPrev">◀</button>
@@ -552,7 +556,7 @@
 <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 
 <script>
-    // ===== БОКОВАЯ АНИМАЦИЯ (ЗВЁЗДЫ И ТОЧКИ) =====
+    // ===== SIDE ANIMATION (STARS AND DOTS) =====
     function createSideParticle() {
         const container = document.getElementById('sideParticles');
         if (!container) return;
@@ -603,7 +607,7 @@
     setInterval(() => { createSideParticle(); }, 500);
     for(let i = 0; i < 20; i++) setTimeout(() => createSideParticle(), i * 200);
     
-    // ===== ЖИВЫЕ ЧАСЫ =====
+    // ===== LIVE CLOCK =====
     function updateClock() {
         const clockEl = document.getElementById('liveClock');
         if (clockEl) {
@@ -615,7 +619,7 @@
     updateClock();
     setInterval(updateClock, 1000);
     
-    // ===== ВКЛАДКИ =====
+    // ===== TABS =====
     const tabs = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');
     
@@ -629,7 +633,7 @@
         });
     });
     
-    // ===== СЛАЙДЕР ПЕРСОНАЖЕЙ =====
+    // ===== CHARACTER SLIDER =====
     const sliderTrack = document.getElementById('charSlider');
     const cards = document.querySelectorAll('.char-card');
     const sliderWrap = sliderTrack ? sliderTrack.parentElement : null;
@@ -677,51 +681,64 @@
         recalcVisible();
     }
     
-    // ===== ИНТЕРАКТИВНЫЙ КОТИК — постоянная анимация при зажатии =====
-    const catImage = document.getElementById('petCatImg');
-    const normalSrc = "./assets/gif/avali-idle.gif";
-    const petSrc = "./assets/gif/avali-pet.gif";
-    const boopSrc = "./assets/gif/avali-boop.gif";
+    // ===== INTERACTIVE AVALI — HOLD TO ANIMATE =====
+    const avaliImage = document.getElementById('petAvaliImg');
+    const normalSrc = "./assets/gif/avali-idle.gif.gif";
+    const petSrc = "./assets/gif/avali-pet.gif.gif";
+    const boopSrc = "./assets/gif/avali-boop.gif.gif";
+    [normalSrc, petSrc, boopSrc].forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
     
-    let currentActionTimer = null;     // таймер, который следит, чтобы гифка не сбросилась раньше времени
-    let isActionActive = false;         // флаг: сейчас анимация (гладим/тыкаем) активна
+    let currentActionTimer = null;     // keeps track of the reset timer
+    let isActionActive = false;        // indicates whether an interaction is active
     
-    // Функция для запуска анимации (поглаживание или тычок)
+    // Starts the pet animation
     function startPetAction() {
-        if (isActionActive) return;     // уже активна, не меняем
+        if (isActionActive) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
-        catImage.src = petSrc;
+        if (!avaliImage) return;
+        if (!avaliImage.src.endsWith("/avali-pet.gif.gif")) {
+            avaliImage.src = petSrc;
+        }
         isActionActive = true;
     }
     
     function startBoopAction() {
         if (isActionActive) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
-        catImage.src = boopSrc;
+        if (!avaliImage) return;
+        if (!avaliImage.src.endsWith("/avali-boop.gif.gif")) {
+            avaliImage.src = boopSrc;
+        }
         isActionActive = true;
-        // звук только в начале тычка, не спамим
+        // Play the sound only at the start of a boop
         const audio = new Audio("https://cdn.jsdelivr.net/gh/meowmeo12893/stuff@main/sqek.mp3");
         audio.volume = 0.3;
         audio.play().catch(e => console.log("audio blocked"));
     }
     
-    // Останавливаем действие — возвращаем к нормальной гифке, но только если нет другого активного нажатия
+    // Resets the animation after a short delay
     function stopActionIfNeeded() {
-        // Даём небольшую задержку, чтобы избежать мерцания при быстрых кликах, но если реально отпустили — сбрасываем
         if (currentActionTimer) clearTimeout(currentActionTimer);
         currentActionTimer = setTimeout(() => {
-            if (!isActionActive) return; // уже не активно
-            // Возвращаем на обычную гифку
-            catImage.src = normalSrc;
+            if (!isActionActive) return;
+            if (!avaliImage) return;
+            if (!avaliImage.src.endsWith("/avali-idle.gif.gif")) {
+                avaliImage.src = normalSrc;
+            }
             isActionActive = false;
         }, 40);
     }
     
-    // Полный сброс по отпусканию мыши/пальца (без задержки, сразу)
+    // Fully resets on mouse/touch release
     function forceStopAction() {
-        if (!catImage) return;
+        if (!avaliImage) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
-        catImage.src = normalSrc;
+        if (!avaliImage.src.endsWith("/avali-idle.gif.gif")) {
+            avaliImage.src = normalSrc;
+        }
         isActionActive = false;
     }
     
@@ -729,7 +746,7 @@
     const noseZoneElem = document.getElementById('noseZone');
     
     if (headZoneElem) {
-        // Нажатие — старт поглаживания
+        // Press to start petting
         headZoneElem.addEventListener('mousedown', (e) => {
             e.preventDefault();
             startPetAction();
@@ -738,10 +755,10 @@
             e.preventDefault();
             startPetAction();
         });
-        // Отпускаем — возвращаем в покой
+        // Release to return to idle
         headZoneElem.addEventListener('mouseup', forceStopAction);
         headZoneElem.addEventListener('touchend', forceStopAction);
-        // На случай, если курсор ушёл за пределы зоны — тоже останавливаем (чтобы не висело)
+        // Also stop if the cursor leaves the trigger area
         headZoneElem.addEventListener('mouseleave', forceStopAction);
     }
     
@@ -759,7 +776,7 @@
         noseZoneElem.addEventListener('mouseleave', forceStopAction);
     }
     
-    // Доп. глобальная защита: если отпустили кнопку мыши где угодно, но действие всё ещё висит — сбросить (для случаев, когда отпустили вне зон)
+    // Global fallback in case the release happens outside the trigger zone
     window.addEventListener('mouseup', () => {
         if (isActionActive) {
             forceStopAction();
@@ -771,10 +788,12 @@
         }
     });
     
-    // первоначальная инициализация
-    catImage.src = normalSrc;
+    // Initial setup
+    if (avaliImage) {
+        avaliImage.src = normalSrc;
+    }
     
-    // ===== ГАЛЕРЕЯ (УВЕЛИЧЕНИЕ КАРТИНОК) =====
+    // ===== GALLERY (IMAGE ENLARGE) =====
     function showModal(imgSrc) {
         const modal = document.createElement('div');
         modal.className = 'image-modal';
@@ -792,7 +811,7 @@
         });
     });
     
-    // ===== КОПИРОВАНИЕ EMAIL =====
+    // ===== COPY EMAIL =====
     const copyEmail = document.querySelector('.copy-email');
     if (copyEmail) {
         copyEmail.addEventListener('click', () => {
@@ -817,22 +836,22 @@
     
     document.querySelectorAll('img').forEach(i => i.setAttribute('draggable', 'false'));
     
-    // фикс для мобильной верстки
+    // Mobile layout adjustment
     if (window.innerWidth <= 680) {
-        const catDiv = document.querySelector('.home-cat');
-        if(catDiv) catDiv.style.justifyContent = 'center';
+        const avaliDiv = document.querySelector('.home-avali');
+        if(avaliDiv) avaliDiv.style.justifyContent = 'center';
     }
     window.addEventListener('resize', () => {
         if (window.innerWidth <= 680) {
-            const catDiv = document.querySelector('.home-cat');
-            if(catDiv) catDiv.style.justifyContent = 'center';
+            const avaliDiv = document.querySelector('.home-avali');
+            if(avaliDiv) avaliDiv.style.justifyContent = 'center';
         } else {
-            const catDiv = document.querySelector('.home-cat');
-            if(catDiv) catDiv.style.justifyContent = 'flex-end';
+            const avaliDiv = document.querySelector('.home-avali');
+            if(avaliDiv) avaliDiv.style.justifyContent = 'flex-end';
         }
     });
 
-    // ===== ОДИН КАСТОМНЫЙ КУРСОР БЕЗ ДУБЛИКАТА =====
+    // ===== SINGLE CUSTOM CURSOR WITHOUT DUPLICATION =====
     const customCursor = document.getElementById('customCursor');
     const cursorMedia = window.matchMedia('(hover: hover) and (pointer: fine)');
 
