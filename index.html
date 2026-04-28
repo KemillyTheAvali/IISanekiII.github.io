@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Neki · Avali artist & devops</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='42'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -506,7 +509,7 @@
                     <div class="pet-area">
                         <div class="avali-booth">
                             <div class="pet-figure">
-                                <img id="petAvaliImg" class="pet-img" src="./assets/gif/avali-idle.gif" alt="fluffy friend" draggable="false">
+                                <img id="petAvaliImg" class="pet-img" src="./assets/gif/avali-idle.gif" alt="fluffy friend" draggable="false" decoding="async" fetchpriority="high">
                                 <div class="head-zone" id="headZone"></div>
                                 <div class="nose-zone" id="noseZone"></div>
                             </div>
@@ -535,12 +538,12 @@
             <div class="char-slider-wrap">
                 <button class="slider-btn btn-prev" id="sliderPrev">◀</button>
                 <div class="slider-track" id="charSlider">
-                    <div class="char-card"><img src="https://i.pinimg.com/736x/8d/30/04/8d3004c08a94d8fb1272ba3fa922b1da.jpg" alt="Neki"><p>🌟 Neki</p></div>
-                    <div class="char-card"><img src="https://i.pinimg.com/736x/2e/75/4e/2e754e89995cf400cbbb5319ef350171.jpg" alt="Marshmallow"><p>🍡 Marshmallow</p></div>
-                    <div class="char-card"><img src="https://i.pinimg.com/736x/53/61/69/536169a67a26bcc088d352d72e4bad56.jpg" alt="Christopher"><p>🐺 Christopher</p></div>
-                    <div class="char-card"><img src="https://i.pinimg.com/736x/ed/f7/eb/edf7eb15501f11b362a375cdd2f19cf3.jpg" alt="idk"><p>✨ idk</p></div>
-                    <div class="char-card"><img src="https://i.pinimg.com/736x/c5/56/0a/c5560a5571a74ad26c8ca2d8e8aaff2f.jpg" alt="idk"><p>✨ idk</p></div>
-                    <div class="char-card"><img src="https://i.pinimg.com/736x/87/9a/40/879a40f887fd7d000aee0a5c1729082c.jpg" alt="idk"><p>✨ idk</p></div>
+                    <div class="char-card"><img src="https://i.pinimg.com/736x/8d/30/04/8d3004c08a94d8fb1272ba3fa922b1da.jpg" alt="Neki" loading="lazy" decoding="async"><p>🌟 Neki</p></div>
+                    <div class="char-card"><img src="https://i.pinimg.com/736x/2e/75/4e/2e754e89995cf400cbbb5319ef350171.jpg" alt="Marshmallow" loading="lazy" decoding="async"><p>🍡 Marshmallow</p></div>
+                    <div class="char-card"><img src="https://i.pinimg.com/736x/53/61/69/536169a67a26bcc088d352d72e4bad56.jpg" alt="Christopher" loading="lazy" decoding="async"><p>🐺 Christopher</p></div>
+                    <div class="char-card"><img src="https://i.pinimg.com/736x/ed/f7/eb/edf7eb15501f11b362a375cdd2f19cf3.jpg" alt="idk" loading="lazy" decoding="async"><p>✨ idk</p></div>
+                    <div class="char-card"><img src="https://i.pinimg.com/736x/c5/56/0a/c5560a5571a74ad26c8ca2d8e8aaff2f.jpg" alt="idk" loading="lazy" decoding="async"><p>✨ idk</p></div>
+                    <div class="char-card"><img src="https://i.pinimg.com/736x/87/9a/40/879a40f887fd7d000aee0a5c1729082c.jpg" alt="idk" loading="lazy" decoding="async"><p>✨ idk</p></div>
                 </div>
                 <button class="slider-btn btn-next" id="sliderNext">▶</button>
             </div>
@@ -686,10 +689,20 @@
     const normalSrc = "./assets/gif/avali-idle.gif";
     const petSrc = "./assets/gif/avali-pet.gif";
     const boopSrc = "./assets/gif/avali-boop.gif";
-    [normalSrc, petSrc, boopSrc].forEach(src => {
+    function preloadInteractionGif(src) {
         const img = new Image();
+        img.decoding = "async";
         img.src = src;
-    });
+    }
+    const warmUpInteractionGifs = () => {
+        preloadInteractionGif(petSrc);
+        preloadInteractionGif(boopSrc);
+    };
+    if ("requestIdleCallback" in window) {
+        requestIdleCallback(warmUpInteractionGifs, { timeout: 1500 });
+    } else {
+        setTimeout(warmUpInteractionGifs, 600);
+    }
     
     let currentActionTimer = null;     // keeps track of the reset timer
     let isActionActive = false;        // indicates whether an interaction is active
