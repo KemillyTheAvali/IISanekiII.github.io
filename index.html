@@ -683,9 +683,9 @@
     
     // ===== INTERACTIVE AVALI — HOLD TO ANIMATE =====
     const avaliImage = document.getElementById('petAvaliImg');
-    const normalSrc = "./assets/gif/avali-idle.gif.gif";
-    const petSrc = "./assets/gif/avali-pet.gif.gif";
-    const boopSrc = "./assets/gif/avali-boop.gif.gif";
+    const normalSrc = "./assets/gif/avali-idle.gif";
+    const petSrc = "./assets/gif/avali-pet.gif";
+    const boopSrc = "./assets/gif/avali-boop.gif";
     [normalSrc, petSrc, boopSrc].forEach(src => {
         const img = new Image();
         img.src = src;
@@ -699,7 +699,7 @@
         if (isActionActive) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
         if (!avaliImage) return;
-        if (!avaliImage.src.endsWith("/avali-pet.gif.gif")) {
+        if (!avaliImage.src.endsWith("/avali-pet.gif")) {
             avaliImage.src = petSrc;
         }
         isActionActive = true;
@@ -709,7 +709,7 @@
         if (isActionActive) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
         if (!avaliImage) return;
-        if (!avaliImage.src.endsWith("/avali-boop.gif.gif")) {
+        if (!avaliImage.src.endsWith("/avali-boop.gif")) {
             avaliImage.src = boopSrc;
         }
         isActionActive = true;
@@ -725,7 +725,7 @@
         currentActionTimer = setTimeout(() => {
             if (!isActionActive) return;
             if (!avaliImage) return;
-            if (!avaliImage.src.endsWith("/avali-idle.gif.gif")) {
+            if (!avaliImage.src.endsWith("/avali-idle.gif")) {
                 avaliImage.src = normalSrc;
             }
             isActionActive = false;
@@ -736,7 +736,7 @@
     function forceStopAction() {
         if (!avaliImage) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
-        if (!avaliImage.src.endsWith("/avali-idle.gif.gif")) {
+        if (!avaliImage.src.endsWith("/avali-idle.gif")) {
             avaliImage.src = normalSrc;
         }
         isActionActive = false;
