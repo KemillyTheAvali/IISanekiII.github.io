@@ -865,6 +865,7 @@
             const avaliDiv = document.querySelector('.home-avali');
             if(avaliDiv) avaliDiv.style.justifyContent = 'flex-end';
         }
+    });
 
         // ===== SINGLE CUSTOM CURSOR WITHOUT DUPLICATION =====
     const customCursor = document.getElementById('customCursor');
@@ -876,7 +877,7 @@
         const rootCursor = getComputedStyle(document.documentElement).getPropertyValue('--spark-cursor');
         const cursorMatch = rootCursor.match(/url\((['"]?)(.*?)\1\)/);
         if (cursorMatch) {
-            customCursor.style.backgroundImage = url("${cursorMatch[2]}");
+            customCursor.style.backgroundImage = `url("${cursorMatch[2]}")`;
         }
 
         const hotspotX = 20;
@@ -885,7 +886,7 @@
         document.body.classList.add('cursor-ready');
 
         window.addEventListener('mousemove', (event) => {
-            customCursor.style.transform = translate3d(${event.clientX - hotspotX}px, ${event.clientY - hotspotY}px, 0);
+            customCursor.style.transform = `translate3d(${event.clientX - hotspotX}px, ${event.clientY - hotspotY}px, 0)`;
         });
 
         window.addEventListener('mouseenter', () => {
@@ -898,8 +899,6 @@
     }
 
     setupCustomCursor();
-        
-    });
 
 </script>
 </body>
