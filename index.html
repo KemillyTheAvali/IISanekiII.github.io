@@ -651,9 +651,9 @@
     }
 
     const avaliImage = document.getElementById('petAvaliImg');
-    const normalSrc = "./assets/gif/avali-idle.gif";
-    const petSrc = "./assets/gif/avali-pet.gif";
-    const boopSrc = "./assets/gif/avali-boop.gif";
+    const normalSrc = "./assets/gif/avali-idle.webp";
+    const petSrc = "./assets/gif/avali-pet.webp";
+    const boopSrc = "./assets/gif/avali-boop.webp";
 
     function preloadInteractionGif(src) {
         const img = new Image();
@@ -678,7 +678,7 @@
     function startPetAction() {
         if (isActionActive || !avaliImage) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
-        if (!avaliImage.src.endsWith("/avali-pet.gif")) {
+        if (!avaliImage.src.endsWith("/avali-pet.webp")) {
             avaliImage.src = petSrc;
         }
         isActionActive = true;
