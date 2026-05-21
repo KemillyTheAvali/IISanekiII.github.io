@@ -496,7 +496,7 @@
                     <div class="pet-area">
                         <div class="avali-booth">
                             <div class="pet-figure">
-                                <img id="petAvaliImg" class="pet-img" src="./assets/gif/avali-idle.webp" alt="fluffy friend" draggable="false" decoding="async" fetchpriority="high">
+                                <img id="petAvaliImg" class="pet-img" src="./assets/gif/avali-idle.png" alt="fluffy friend" draggable="false" decoding="async" fetchpriority="high">
                                 <div class="head-zone" id="headZone"></div>
                                 <div class="nose-zone" id="noseZone"></div>
                             </div>
@@ -672,9 +672,23 @@
     }
 
     const avaliImage = document.getElementById('petAvaliImg');
-    const normalSrc = "./assets/gif/avali-idle.webp";
-    const petSrc = "./assets/gif/avali-pet.webp";
-    const boopSrc = "./assets/gif/avali-boop.webp";
+    const normalStaticSrc = "./assets/gif/avali-idle.png";
+    const normalSrc = "./assets/gif/avali-idle.gif";
+    const petSrc = "./assets/gif/avali-pet.gif";
+    const boopSrc = "./assets/gif/avali-boop.gif";
+    let normalGifReady = false;
+
+    function warmUpIdleGif() {
+        const idleImage = new Image();
+        idleImage.decoding = "async";
+        idleImage.onload = () => {
+            normalGifReady = true;
+            if (avaliImage && !isActionActive) {
+                avaliImage.src = normalSrc;
+            }
+        };
+        idleImage.src = normalSrc;
+    }
 
     function preloadInteractionGif(src) {
         const img = new Image();
@@ -686,6 +700,8 @@
         preloadInteractionGif(petSrc);
         preloadInteractionGif(boopSrc);
     };
+
+    warmUpIdleGif();
 
     if ("requestIdleCallback" in window) {
         requestIdleCallback(warmUpInteractionGifs, { timeout: 1500 });
@@ -699,7 +715,7 @@
     function startPetAction() {
         if (isActionActive || !avaliImage) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
-        if (!avaliImage.src.endsWith("/avali-pet.webp")) {
+        if (!avaliImage.src.endsWith("/avali-pet.gif")) {
             avaliImage.src = petSrc;
         }
         isActionActive = true;
@@ -708,7 +724,7 @@
     function startBoopAction() {
         if (isActionActive || !avaliImage) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
-        if (!avaliImage.src.endsWith("/avali-boop.webp")) {
+        if (!avaliImage.src.endsWith("/avali-boop.gif")) {
             avaliImage.src = boopSrc;
         }
         isActionActive = true;
@@ -720,8 +736,12 @@
     function forceStopAction() {
         if (!avaliImage) return;
         if (currentActionTimer) clearTimeout(currentActionTimer);
-        if (!avaliImage.src.endsWith("/avali-idle.webp")) {
-            avaliImage.src = normalSrc;
+        if (normalGifReady) {
+            if (!avaliImage.src.endsWith("/avali-idle.gif")) {
+                avaliImage.src = normalSrc;
+            }
+        } else if (!avaliImage.src.endsWith("/avali-idle.png")) {
+            avaliImage.src = normalStaticSrc;
         }
         isActionActive = false;
     }
@@ -765,7 +785,7 @@
     });
 
     if (avaliImage) {
-        avaliImage.src = normalSrc;
+        avaliImage.src = normalStaticSrc;
     }
 
     function showModal(imgSrc) {
